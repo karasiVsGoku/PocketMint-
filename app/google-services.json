@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "643130942437",
+    "firebase_url": "https://pocketmint-1488b-default-rtdb.firebaseio.com",
+    "project_id": "pocketmint-1488b",
+    "storage_bucket": "pocketmint-1488b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643130942437:android:59a24a2b6c4b834891450c",
+        "android_client_info": {
+          "package_name": "com.example.pocketmint"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCh65r9jCFWQgXxBLgvyKFml42hVYaiBoo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
