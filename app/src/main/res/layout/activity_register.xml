@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mint_background"
+    tools:context=".RegisterActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/email_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_edittext"
+            android:ems="22"
+            android:hint="email"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:inputType="textEmailAddress"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textColorHint="#757575" />
+
+
+        <EditText
+            android:id="@+id/username_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_edittext"
+            android:ems="22"
+            android:hint="username"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:inputType="text"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textColorHint="#757575" />
+
+        <EditText
+            android:id="@+id/password_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_edittext"
+            android:ems="22"
+            android:hint="password"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:inputType="textPassword"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textColorHint="#757575" />
+
+        <EditText
+            android:id="@+id/confirm_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_edittext"
+            android:ems="22"
+            android:hint="confirm password"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:inputType="textPassword"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textColorHint="#757575" />
+
+        <Button
+            android:id="@+id/make_an_account_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="19"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/mint"
+            android:text="Make an account" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_marginTop="10dp"
+            android:ems="19"
+            android:text="Already have an account?" />
+
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="19"
+            android:backgroundTint="@color/mint"
+            android:text="Login" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="mint">#4DFF00</color>
+    <color name="mint_background">#1C1C1C</color>
 </resources>
