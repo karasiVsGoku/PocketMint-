@@ -69,7 +69,8 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                startActivity(new Intent(LoginActivity.this, SplashScreenActivity.class));
+                                finish();
                             } else {
                                 Toast.makeText(LoginActivity.this, "Something went wrong, please try again", Toast.LENGTH_SHORT).show();
                             }
@@ -86,6 +87,13 @@ public class LoginActivity extends AppCompatActivity {
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser != null)
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        {
+            try {
+                startActivity(new Intent(LoginActivity.this, SplashScreenActivity.class));
+                finish();
+            } catch (Exception e) {
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }

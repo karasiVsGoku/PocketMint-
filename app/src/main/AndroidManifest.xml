@@ -13,6 +13,18 @@
         android:theme="@style/Theme.PocketMint"
         tools:targetApi="31">
         <activity
+            android:name=".AddDebtActivity"
+            android:exported="false" />
+        <activity
+            android:name=".YourDebtorsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".YourDebtActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SplashScreenActivity"
+            android:exported="false" />
+        <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
