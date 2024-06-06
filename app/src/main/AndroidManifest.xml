@@ -13,6 +13,9 @@
         android:theme="@style/Theme.PocketMint"
         tools:targetApi="31">
         <activity
+            android:name=".DebtInformationActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddDebtActivity"
             android:exported="false" />
         <activity

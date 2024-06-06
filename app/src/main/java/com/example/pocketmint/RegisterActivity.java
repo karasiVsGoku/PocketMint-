@@ -104,7 +104,7 @@ public class RegisterActivity extends AppCompatActivity {
                     DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users");
 
                     // adds the username to the realtime database
-                    userRef.child(currentUser.getUid()).setValue(new User(username)).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    userRef.child(currentUser.getUid()).setValue(new User(username, currentUser.getUid())).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()) {
