@@ -40,7 +40,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DebtInformationActivity.class);
-                SharedPreferences.Editor editor = context.getSharedPreferences("PREPS", context.MODE_PRIVATE).edit();
+                SharedPreferences.Editor editor = context.getSharedPreferences("INFO", context.MODE_PRIVATE).edit();
                 editor.putString("receiver", user.getId());
                 editor.apply();
 

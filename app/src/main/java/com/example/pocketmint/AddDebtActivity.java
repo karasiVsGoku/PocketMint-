@@ -14,6 +14,8 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,11 +45,15 @@ public class AddDebtActivity extends AppCompatActivity {
             return insets;
         });
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         search_bar = findViewById(R.id.search_bar);
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(AddDebtActivity.this));
         users = new ArrayList<>();
+        userAdapter = new UserAdapter(AddDebtActivity.this, users);
         recyclerView.setAdapter(userAdapter);
+        recyclerView.addItemDecoration(new DividerItemDecoration(AddDebtActivity.this,30));
 
 
         showAllUsers();
@@ -62,7 +68,7 @@ public class AddDebtActivity extends AppCompatActivity {
                 if (s.toString().isEmpty()) {
                     showAllUsers();
                 } else {
-                    searchUsers(s.toString());
+                    searchUsers(s.toString().toLowerCase());
                 }
             }
 
@@ -79,14 +85,19 @@ public class AddDebtActivity extends AppCompatActivity {
 
     private void searchUsers(String s) {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-        Query query = reference.orderByChild("username").startAt(s);
+        Query query = reference.orderByChild("username");
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 users.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
                     User user = dataSnapshot.getValue(User.class);
-                    users.add(user);
+                    assert currentUser != null;
+                    assert user != null;
+                    if (user.getUsername().toLowerCase().startsWith(s) && !user.getId().equals(currentUser.getUid())) {
+                        users.add(user);
+                    }
                 }
                 updateAdapter();
             }
@@ -104,8 +115,13 @@ public class AddDebtActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 users.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
                     User user = dataSnapshot.getValue(User.class);
-                    users.add(user);
+                    assert currentUser != null;
+                    assert user != null;
+                    if (!user.getId().equals(currentUser.getUid())) {
+                        users.add(user);
+                    }
                 }
                 updateAdapter();
             }

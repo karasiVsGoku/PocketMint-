@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="mint">#4DFF00</color>
     <color name="mint_background">#1C1C1C</color>
+    <color name="mint_hint">#858585</color>
 </resources>

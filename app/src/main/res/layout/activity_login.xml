@@ -31,23 +31,23 @@
             android:inputType="textEmailAddress"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:textColorHint="#757575" />
+            android:textColorHint="@color/mint_hint" />
 
         <EditText
             android:id="@+id/password_input"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
             android:background="@drawable/rounded_edittext"
             android:ems="22"
             android:hint="password"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
             android:inputType="textPassword"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:textColorHint="#757575" />
+            android:textColorHint="@color/mint_hint" />
 
         <Button
             android:id="@+id/login_button"

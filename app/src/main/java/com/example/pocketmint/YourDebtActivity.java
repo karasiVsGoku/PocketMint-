@@ -25,6 +25,7 @@ public class YourDebtActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         add_debt_btn = findViewById(R.id.add_debt_button);
         add_debt_btn.setOnClickListener(new View.OnClickListener() {
