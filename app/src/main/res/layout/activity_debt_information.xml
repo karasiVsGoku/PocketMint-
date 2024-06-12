@@ -5,6 +5,66 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/mint_background"
     tools:context=".DebtInformationActivity">
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/money_amount_input"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:autofillHints=""
+            android:background="@drawable/rounded_edittext"
+            android:ems="22"
+            android:hint="How much money do you owe?"
+            android:inputType="text"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            tools:ignore="RtlSymmetry" />
+
+        <EditText
+            android:id="@+id/reason_input"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_edittext"
+            android:ems="22"
+            android:hint="Reason?"
+            android:inputType="text"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            tools:ignore="RtlSymmetry" />
+
+        <EditText
+            android:id="@+id/date_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_edittext"
+            android:ems="10"
+            android:inputType="date"
+            android:minHeight="48dp"
+            android:paddingTop="10dp"
+            android:paddingStart="10dp"
+            android:layout_marginTop="10dp"
+            android:paddingBottom="10dp"
+            android:hint="Select date"
+            android:drawableRight="@drawable/calendar"
+            tools:ignore="RtlSymmetry" />
+
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
