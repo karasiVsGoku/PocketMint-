@@ -1,5 +1,7 @@
 package com.example.pocketmint;
 
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -28,6 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private Button login_btn, make_an_account_btn;
     private EditText username_input, email_input, password_input, confirm_input;
+    private NetworkChangeReceiver networkChangeReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,8 @@ public class RegisterActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        networkChangeReceiver = new NetworkChangeReceiver();
 
         username_input = findViewById(R.id.username_input);
         email_input = findViewById(R.id.email_input);
@@ -120,7 +125,19 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
+    }
 
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeReceiver, filter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(networkChangeReceiver);
     }
 }

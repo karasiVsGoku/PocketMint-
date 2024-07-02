@@ -1,6 +1,9 @@
 package com.example.pocketmint;
 
+import android.content.BroadcastReceiver;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -31,6 +34,7 @@ public class YourDebtActivity extends AppCompatActivity {
     private RecyclerView debtRecycler;
     private List<Debt> debts;
     private DebtAdapter adapter;
+    private BroadcastReceiver networkChangeReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,8 @@ public class YourDebtActivity extends AppCompatActivity {
             return insets;
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        networkChangeReceiver = new NetworkChangeReceiver();
 
         add_debt_btn = findViewById(R.id.add_debt_button);
         add_debt_btn.setOnClickListener(new View.OnClickListener() {
@@ -82,5 +88,18 @@ public class YourDebtActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeReceiver, filter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(networkChangeReceiver);
     }
 }

@@ -1,5 +1,8 @@
 package com.example.pocketmint;
 
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -27,6 +30,7 @@ public class YourDebtorsActivity extends AppCompatActivity {
     private RecyclerView debtRecycler;
     private List<Debt> debts;
     private DebtAdapter adapter;
+    private BroadcastReceiver networkChangeReceiver;
 
 
     @Override
@@ -39,6 +43,8 @@ public class YourDebtorsActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        networkChangeReceiver = new NetworkChangeReceiver();
 
         debts = new ArrayList<>();
         debtRecycler = findViewById(R.id.debtRecycler);
@@ -67,5 +73,18 @@ public class YourDebtorsActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkChangeReceiver, filter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterReceiver(networkChangeReceiver);
     }
 }
