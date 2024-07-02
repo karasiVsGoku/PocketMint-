@@ -36,7 +36,7 @@ import java.util.Locale;
 public class DebtInformationActivity extends AppCompatActivity {
 
     private final Calendar calendar = Calendar.getInstance();
-    private EditText datePicker, reasonTV;
+    private EditText datePicker, reasonTV, amountTV;
     private TextView receiverText;
     private String receiver_id;
     private Button add_debt;
@@ -58,6 +58,7 @@ public class DebtInformationActivity extends AppCompatActivity {
         receiverText = findViewById(R.id.receiver_text);
         reasonTV = findViewById(R.id.reason_input);
         add_debt = findViewById(R.id.add_debt);
+        amountTV = findViewById(R.id.money_amount_input);
 
         SharedPreferences prefs = getSharedPreferences("INFO", Context.MODE_PRIVATE);
         receiver_id = prefs.getString("receiver", "none");
@@ -84,11 +85,14 @@ public class DebtInformationActivity extends AppCompatActivity {
                 try {
                     FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
                     String reason = reasonTV.getText().toString();
-                    Debt debt = new Debt(receiver_id, currentUser.getUid(), reason, datePicker.getText().toString());
+                    int amount = Integer.parseInt(amountTV.getText().toString());
+                    Debt debt = new Debt(receiver_id, currentUser.getUid(), reason, amount, datePicker.getText().toString());
 
                     DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Debts");
                     reference.child(debt.getId()).setValue(debt);
                     startActivity(new Intent(DebtInformationActivity.this, MainActivity.class));
+                    startActivity(new Intent(DebtInformationActivity.this, MainActivity.class));
+                    finish();
                 } catch (Exception e) {
                     Toast.makeText(DebtInformationActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
